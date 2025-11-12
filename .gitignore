@@ -1,0 +1,5 @@
+.venv/
+key-01/
+.cursorignore
+psk_chacha-poly.zip
+TODO.txt
