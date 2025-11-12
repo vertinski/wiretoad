@@ -54,13 +54,13 @@ For this to work securely:
 
 ## Architecture  
 
-PSK File Structure
-┌───────────────────────────────────────────────────────────────────────┐
-│ Offset 0:   [Auth_Tag_A][Nonce_A][Key_A][Auth_Tag_B][Nonce_B][Key_B]  │
-│ Offset 120: [Auth_Tag_A][Nonce_A][Key_A][Auth_Tag_B][Nonce_B][Key_B]  │
-│ Offset 240: [Auth_Tag_A][Nonce_A][Key_A][Auth_Tag_B][Nonce_B][Key_B]  │
-│ ...                                                                   │
-└───────────────────────────────────────────────────────────────────────┘
+PSK File Structure  
+┌──────────────────────────────────────────────────────────────────────┐  
+│ Offset 0:   [Auth_Tag_A][Nonce_A][Key_A][Auth_Tag_B][Nonce_B][Key_B] │  
+│ Offset 120: [Auth_Tag_A][Nonce_A][Key_A][Auth_Tag_B][Nonce_B][Key_B] │  
+│ Offset 240: [Auth_Tag_A][Nonce_A][Key_A][Auth_Tag_B][Nonce_B][Key_B] │  
+│ ...                                                                  │  
+└──────────────────────────────────────────────────────────────────────┘  
 
 Each "slot" contains:
 - 16 bytes: Authentication tag for direction A→B
