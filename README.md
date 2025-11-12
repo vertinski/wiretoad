@@ -8,13 +8,13 @@
 
 Traditional WireGuard:
 ======================
-Public Key Auth → ECDH → Mix PSK → Session Keys → Encrypt
+Public Key Auth → ECDH → Mix PSK → Session Keys → Encrypt  
     ↑                                                  
-Vulnerable to:
-- Quantum computers breaking ECDH
-- Side-channel attacks on curve operations
-- Implementation flaws in elliptic curve code
-- Key generation vulnerabilities
+Vulnerable to:  
+- Quantum computers breaking ECDH  
+- Side-channel attacks on curve operations  
+- Implementation flaws in elliptic curve code  
+- Key generation vulnerabilities  
 
 Pure PSK System:
 ================
@@ -27,13 +27,12 @@ Advantages:
 ✓ No complex key exchange
 ✓ Authentication via shared secret
 ✓ Perfect forward secrecy through key consumption
-✓ No public key infrastructure needed
-```
+✓ No public key infrastructure needed  
 
 ## Critical Requirements
 
 For this to work securely:
-```
+
 ✓ Key Material Quality:
   - Truly random (from hardware RNG or /dev/random)
   - Never reused
@@ -51,18 +50,17 @@ For this to work securely:
 
 ✓ Time-Bounded:
   - System only works while key material lasts
-  - Must distribute new material before exhaustion
-```
+  - Must distribute new material before exhaustion  
 
-## Architecture
-```
-                    PSK File Structure
-┌──────────────────────────────────────────────────────────────────────────┐
-│ Offset 0:   [Auth_Tag_A][Nonce_A][Key_A][Auth_Tag_B][Nonce_B][Key_B]     │
-│ Offset 120: [Auth_Tag_A][Nonce_A][Key_A][Auth_Tag_B][Nonce_B][Key_B]     │
-│ Offset 240: [Auth_Tag_A][Nonce_A][Key_A][Auth_Tag_B][Nonce_B][Key_B]     │
-│ ...                                                                      │
-└──────────────────────────────────────────────────────────────────────────┘
+## Architecture  
+
+PSK File Structure
+┌───────────────────────────────────────────────────────────────────────┐
+│ Offset 0:   [Auth_Tag_A][Nonce_A][Key_A][Auth_Tag_B][Nonce_B][Key_B]  │
+│ Offset 120: [Auth_Tag_A][Nonce_A][Key_A][Auth_Tag_B][Nonce_B][Key_B]  │
+│ Offset 240: [Auth_Tag_A][Nonce_A][Key_A][Auth_Tag_B][Nonce_B][Key_B]  │
+│ ...                                                                   │
+└───────────────────────────────────────────────────────────────────────┘
 
 Each "slot" contains:
 - 16 bytes: Authentication tag for direction A→B
